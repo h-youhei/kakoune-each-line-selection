@@ -8,8 +8,9 @@ abc abc
 ```
 Select lines `x`.
 
-Split lines `S`; Here, we split by space. so `S<space><ret>`
-[] means containts are selected.
+Split lines `S`; Here, we split by spaces, so `S\s<ret>`
+
+[] means contents are selected.
 ```
 [abc]
 [abc] [abc]
@@ -18,7 +19,10 @@ Split lines `S`; Here, we split by space. so `S<space><ret>`
 ```
 
 Let's select each line!
-Run command `:keep-selection-each-line<ret>`
+
+Run next command `:keep-selection-each-line<ret>`
+
+It keeps last selection of each line.
 ```
 [abc]
 abc [abc]
@@ -26,6 +30,8 @@ abc abc [abc]
 abc [abc]
 ```
 You can also prepend count. `2:keep-selection-each-line<ret>`
+
+It keeps 'count'th selection of each line.
 ```
 abc
 abc [abc]
