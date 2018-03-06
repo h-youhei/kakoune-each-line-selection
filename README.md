@@ -45,7 +45,7 @@ abc
 [abc] [abc] abc
 [abc] abc
 ```
-Drop command also accepts conut to be sure. `2:drop-selection-each-line<ret>`
+Drop command also accepts count to be sure. `2:drop-selection-each-line<ret>`
 ```
 [abc]
 [abc] abc
