@@ -1,22 +1,24 @@
-define-command keep-selection-each-line %{ %sh{
+define-command -docstring 'Keep last selection each line.
+If count is given, keep nth selection each line instead.' \
+keep-selection-each-line %{ %sh{
 	if [ $kak_count -eq 0 ] ; then
 		echo _keep-last-selection-each-line
 	else
 		echo _keep-nth-selection-each-line
 	fi
-}} -docstring 'Keep last selection each line.
-If count is given, keep nth selection each line instead.'
+}}
 
-define-command drop-selection-each-line %{ %sh{
+define-command -docstring 'Drop last selection each line.
+If count is given, drop nth selection each line instead.' \
+drop-selection-each-line %{ %sh{
 	if [ $kak_count -eq 0 ] ; then
 		echo _drop-last-selection-each-line
 	else
 		echo _drop-nth-selection-each-line
 	fi
-}} -docstring 'Drop last selection each line.
-If count is given, drop nth selection each line instead.'
+}}
 
-define-command _keep-last-selection-each-line -hidden %{ %sh{
+define-command -hidden _keep-last-selection-each-line %{ %sh{
 	old_selections=`echo $kak_selections_desc | tr : '\n' | sort -n`
 	selections=
 	prev_line=`echo $old_selections | cut -f 1 -d '.'`
@@ -34,7 +36,7 @@ define-command _keep-last-selection-each-line -hidden %{ %sh{
 	echo "select ${selections#:}"
 }}
 
-define-command _keep-nth-selection-each-line -hidden %{ %sh{
+define-command -hidden _keep-nth-selection-each-line %{ %sh{
 	old_selections=`echo $kak_selections_desc | tr : '\n' | sort -n`
 	selections=
 	prev_line=`echo $old_selections | cut -f 1 -d '.'`
@@ -52,7 +54,7 @@ define-command _keep-nth-selection-each-line -hidden %{ %sh{
 	echo "select ${selections#:}"
 }}
 
-define-command _drop-last-selection-each-line -hidden %{ %sh{
+define-command -hidden _drop-last-selection-each-line %{ %sh{
 	old_selections=`echo $kak_selections_desc | tr : '\n' | sort -n`
 	selections=
 	prev_line=`echo $old_selections | cut -f 1 -d '.'`
@@ -70,7 +72,7 @@ define-command _drop-last-selection-each-line -hidden %{ %sh{
 	echo "select ${selections#:}"
 }}
 
-define-command _drop-nth-selection-each-line -hidden %{ %sh{
+define-command -hidden _drop-nth-selection-each-line %{ %sh{
 	old_selections=`echo $kak_selections_desc | tr : '\n' | sort -n`
 	selections=
 	prev_line=`echo $old_selections | cut -f 1 -d '.'`
