@@ -19,7 +19,7 @@ drop-selection-each-line %{ %sh{
 }}
 
 define-command -hidden _keep-last-selection-each-line %{ %sh{
-	old_selections=`echo $kak_selections_desc | tr : '\n' | sort -n`
+	old_selections=`echo $kak_selections_desc | tr : '\n' | sort -t '.' -k 1n,1 -k 2n,2`
 	selections=
 	prev_line=`echo $old_selections | cut -f 1 -d '.'`
 	last_sel=
@@ -37,7 +37,7 @@ define-command -hidden _keep-last-selection-each-line %{ %sh{
 }}
 
 define-command -hidden _keep-nth-selection-each-line %{ %sh{
-	old_selections=`echo $kak_selections_desc | tr : '\n' | sort -n`
+	old_selections=`echo $kak_selections_desc | tr : '\n' | sort -t '.' -k 1n,1 -k 2n,2`
 	selections=
 	prev_line=`echo $old_selections | cut -f 1 -d '.'`
 	i=1
@@ -55,7 +55,7 @@ define-command -hidden _keep-nth-selection-each-line %{ %sh{
 }}
 
 define-command -hidden _drop-last-selection-each-line %{ %sh{
-	old_selections=`echo $kak_selections_desc | tr : '\n' | sort -n`
+	old_selections=`echo $kak_selections_desc | tr : '\n' | sort -t '.' -k 1n,1 -k 2n,2`
 	selections=
 	prev_line=`echo $old_selections | cut -f 1 -d '.'`
 	last_sel=
@@ -73,7 +73,7 @@ define-command -hidden _drop-last-selection-each-line %{ %sh{
 }}
 
 define-command -hidden _drop-nth-selection-each-line %{ %sh{
-	old_selections=`echo $kak_selections_desc | tr : '\n' | sort -n`
+	old_selections=`echo $kak_selections_desc | tr : '\n' | sort -t '.' -k 1n,1 -k 2n,2`
 	selections=
 	prev_line=`echo $old_selections | cut -f 1 -d '.'`
 	i=1
